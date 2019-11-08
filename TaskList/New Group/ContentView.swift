@@ -23,18 +23,25 @@ import SwiftUI
 
 struct ContentView: View {
     @State var modalIsPresented = false;
-    var taskStore: TaskStore;
+    @ObservedObject var taskStore: TaskStore
     
     var body: some View {
         NavigationView {
-            List(taskStore.tasks){
-                task in
-                Text(task.name);
+            
+            List{
+                ForEach(taskStore.tasks) { task in
+                    Text(task.name)
+                }
+                .onDelete { indexSet in
+                    self.taskStore.tasks.remove(atOffsets: indexSet)
+                }
             }
                 
             .navigationBarTitle("Tasks")
                 //nbms- trailing
-                .navigationBarItems(trailing:
+                .navigationBarItems(
+                    leading: EditButton(),
+                    trailing:
                     
                     Button(action: {
                         self.modalIsPresented = true;

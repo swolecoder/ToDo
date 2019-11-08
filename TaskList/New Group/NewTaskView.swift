@@ -11,7 +11,7 @@ import SwiftUI
 struct NewTaskView: View {
     
     @State var text = "";
-    var taskStore: TaskStore;
+    @ObservedObject var taskStore: TaskStore;
     
     //close the modal
     @Environment(\.presentationMode) var presentationMode;
