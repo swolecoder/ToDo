@@ -42,7 +42,7 @@ struct ContentView: View {
                         Image(systemName: "plus")
                     }
                     .sheet(isPresented: $modalIsPresented){
-                        NewTaskView();
+                        NewTaskView(taskStore: self.taskStore);
                     }
                     
             )
