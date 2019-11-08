@@ -7,5 +7,5 @@
 //
 import Combine;
 class TaskStore: ObservableObject {
-    @Published   var tasks = ["Ashish1", "Ashish2", "Ashish3", "Ashish4", "Ashish5","Ashish6"].map{ Task(name: $0)}
+    @Published   var tasks = ["WorkOut", "Finish Project 1", "Walk Dog"].map{ Task(name: $0)}
 }
