@@ -32,8 +32,16 @@ struct ContentView: View {
                 ForEach(taskStore.tasks) { task in
                     Text(task.name)
                 }
-                .onDelete { indexSet in
-                    self.taskStore.tasks.remove(atOffsets: indexSet)
+                    
+                    //moving rows
+                    .onMove{ sourceIndices, destinationIndices in
+                        self.taskStore.tasks.move(fromOffsets: sourceIndices, toOffset: destinationIndices)
+                        
+                }
+                    
+                    //delete items
+                    .onDelete { indexSet in
+                        self.taskStore.tasks.remove(atOffsets: indexSet)
                 }
             }
                 
