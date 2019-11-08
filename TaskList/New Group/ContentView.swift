@@ -17,11 +17,12 @@
              Text(task.name);
          }
  
- 
+ .sheet to add modal view
  */
 import SwiftUI
 
 struct ContentView: View {
+    @State var modalIsPresented = false;
     var taskStore: TaskStore;
     
     var body: some View {
@@ -35,8 +36,13 @@ struct ContentView: View {
                 //nbms- trailing
                 .navigationBarItems(trailing:
                     
-                    Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/) {
+                    Button(action: {
+                        self.modalIsPresented = true;
+                    }) {
                         Image(systemName: "plus")
+                    }
+                    .sheet(isPresented: $modalIsPresented){
+                        NewTaskView();
                     }
                     
             )
